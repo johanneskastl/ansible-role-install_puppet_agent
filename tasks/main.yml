@@ -1,0 +1,8 @@
+---
+# install_puppet_agent/tasks/main.yml
+
+- name: 'Install on RockyLinux8'
+  include: RockyLinux.yml
+  when:
+    - 'ansible_distribution == "Rocky"'
+    - 'ansible_distribution_major_version == "8"'
