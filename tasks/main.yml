@@ -7,6 +7,12 @@
     - 'ansible_distribution == "Rocky"'
     - 'ansible_distribution_major_version == "8"'
 
+- name: 'Install on AlmaLinux8'
+  include_tasks: AlmaLinux.yml
+  when:
+    - 'ansible_distribution == "AlmaLinux"'
+    - 'ansible_distribution_major_version == "8"'
+
 - name: 'Install on openSUSE Leap 15.x'
   include_tasks: openSUSE_Leap.yml
   when:
