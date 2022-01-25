@@ -31,4 +31,5 @@
   package:
     name: 'puppet-agent'
     state: 'present'
+  ignore_errors: "{{ ansible_check_mode |default(false)}}"
   when: 'ansible_distribution == "Rocky"'
