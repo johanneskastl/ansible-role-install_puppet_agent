@@ -1,0 +1,44 @@
+---
+# install_puppet_server/tasks/SLES15.yml
+
+- name: 'import the puppet GPG key into RPM'
+  rpm_key:
+    key: "{{ item }}" 
+    state: 'present'
+  with_items:
+    - 'https://yum.puppet.com/RPM-GPG-KEY-puppet'
+    - 'https://yum.puppet.com/RPM-GPG-KEY-puppetlabs'
+    - 'https://yum.puppet.com/RPM-GPG-KEY-puppet-20250406'
+  when:
+    - 'ansible_distribution == "SLES"'
+    - 'ansible_distribution_major_version == "15"'
+
+- name: 'Install the puppet-release package'
+  package:
+    name: 'https://yum.puppet.com/puppet7-release-sles-15.noarch.rpm'
+    state: 'present'
+  when:
+    - 'ansible_distribution == "SLES"'
+    - 'ansible_distribution_major_version == "15"'
+
+- name: 'import the puppet GPG keys into RPM'
+  rpm_key:
+    key: "{{ item }}"
+    state: 'present'
+  with_items:
+    - '/etc/pki/rpm-gpg/RPM-GPG-KEY-puppet7-release'
+    - '/etc/pki/rpm-gpg/RPM-GPG-KEY-2025-04-06-puppet7-release'
+  ignore_errors: "{{ ansible_check_mode |default(false)}}"
+  when:
+    - 'ansible_distribution == "SLES"'
+    - 'ansible_distribution_major_version == "15"'
+
+- name: 'Install the puppet-agent package'
+  package:
+    name: 'puppet-agent'
+    state: 'present'
+  ignore_errors: "{{ ansible_check_mode |default(false)}}"
+  when:
+    - 'ansible_distribution == "SLES"'
+    - 'ansible_distribution_major_version == "15"'
+
