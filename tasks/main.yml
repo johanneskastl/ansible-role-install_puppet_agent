@@ -12,3 +12,9 @@
   when:
     - 'ansible_distribution == "openSUSE Leap"'
     - 'ansible_distribution_major_version == "15"'
+
+- name: 'Install on SLES15'
+  include_tasks: SLES15.yml
+  when:
+    - 'ansible_distribution == "SLES"'
+    - 'ansible_distribution_major_version == "15"'
