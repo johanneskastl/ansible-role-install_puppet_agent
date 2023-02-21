@@ -2,25 +2,25 @@
 # install_puppet_agent/tasks/main.yml
 
 - name: 'Install on RockyLinux8'
-  include_tasks: RockyLinux.yml
+  ansible.builtin.include_tasks: RockyLinux.yml
   when:
     - 'ansible_distribution == "Rocky"'
     - 'ansible_distribution_major_version == "8"'
 
 - name: 'Install on AlmaLinux8'
-  include_tasks: AlmaLinux.yml
+  ansible.builtin.include_tasks: AlmaLinux.yml
   when:
     - 'ansible_distribution == "AlmaLinux"'
     - 'ansible_distribution_major_version == "8"'
 
 - name: 'Install on openSUSE Leap 15.x'
-  include_tasks: openSUSE_Leap.yml
+  ansible.builtin.include_tasks: openSUSE_Leap.yml
   when:
     - 'ansible_distribution == "openSUSE Leap"'
     - 'ansible_distribution_major_version == "15"'
 
 - name: 'Install on SLES15'
-  include_tasks: SLES15.yml
+  ansible.builtin.include_tasks: SLES15.yml
   when:
     - 'ansible_distribution == "SLES"'
     - 'ansible_distribution_major_version == "15"'
