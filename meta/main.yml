@@ -10,10 +10,16 @@ galaxy_info:
   min_ansible_version: '2.12'
 
   platforms:
-    # currently only RockyLinux was tested
+    # currently only RockyLinux and AlmaLinux were tested
     - name: EL
       versions:
         - '8'
+    - name: opensuse
+      versions:
+        - '15.4'
+    - name: SLES
+      versions:
+        - '15SP4'
 
   galaxy_tags: []
 
