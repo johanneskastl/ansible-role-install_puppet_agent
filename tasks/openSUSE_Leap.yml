@@ -2,7 +2,7 @@
 # install_puppet_server/tasks/openSUSE_Leap.yml
 
 - name: 'import the puppet GPG key into RPM'
-  rpm_key:
+  ansible.builtin.rpm_key:
     key: "{{ item }}" 
     state: 'present'
   with_items:
@@ -14,7 +14,7 @@
     - 'ansible_distribution_major_version == "15"'
 
 - name: 'Install the puppet-release package'
-  package:
+  ansible.builtin.package:
     name: 'https://yum.puppet.com/puppet7-release-sles-15.noarch.rpm'
     state: 'present'
   when:
@@ -22,7 +22,7 @@
     - 'ansible_distribution_major_version == "15"'
 
 - name: 'import the puppet GPG keys into RPM'
-  rpm_key:
+  ansible.builtin.rpm_key:
     key: "{{ item }}"
     state: 'present'
   with_items:
@@ -34,7 +34,7 @@
     - 'ansible_distribution_major_version == "15"'
 
 - name: 'Install the puppet-agent package'
-  package:
+  ansible.builtin.package:
     name: 'puppet-agent'
     state: 'present'
   ignore_errors: "{{ ansible_check_mode |default(false)}}"
