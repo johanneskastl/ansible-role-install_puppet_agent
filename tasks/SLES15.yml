@@ -41,4 +41,3 @@
   when:
     - 'ansible_distribution == "SLES"'
     - 'ansible_distribution_major_version == "15"'
-
