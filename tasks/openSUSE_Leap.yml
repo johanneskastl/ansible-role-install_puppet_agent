@@ -28,7 +28,7 @@
   with_items:
     - '/etc/pki/rpm-gpg/RPM-GPG-KEY-puppet7-release'
     - '/etc/pki/rpm-gpg/RPM-GPG-KEY-2025-04-06-puppet7-release'
-  ignore_errors: "{{ ansible_check_mode |default(false)}}"
+  ignore_errors: "{{ ansible_check_mode | default(false) }}"
   when:
     - 'ansible_distribution == "openSUSE Leap"'
     - 'ansible_distribution_major_version == "15"'
@@ -37,7 +37,7 @@
   ansible.builtin.package:
     name: 'puppet-agent'
     state: 'present'
-  ignore_errors: "{{ ansible_check_mode |default(false)}}"
+  ignore_errors: "{{ ansible_check_mode | default(false) }}"
   when:
     - 'ansible_distribution == "openSUSE Leap"'
     - 'ansible_distribution_major_version == "15"'
